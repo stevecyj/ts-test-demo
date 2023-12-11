@@ -22,4 +22,22 @@ describe("User", () => {
 
     expect(result).toBe("User John buys iPhone");
   });
+
+  it("v2, 委託，用工廠函數隱藏不需要的屬性", () => {
+    const user = createUser("John");
+    const product = createProduct("iPhone");
+
+    // buy 只需要測試 name 和 product.name 是否正確
+    const result = user.buy(product);
+
+    expect(result).toBe("User John buys iPhone");
+  });
 });
+
+const createUser = (name: string) => {
+  return new User(name, 18, "user@user.com", "Taipei");
+};
+
+const createProduct = (name: string) => {
+  return new Product(name, 20000, "The best phone in the world");
+};
