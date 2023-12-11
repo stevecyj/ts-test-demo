@@ -9,7 +9,7 @@ export const userAge = () => {
   return 18;
 };
 
-export const fetchUserAge = () => {
+export const fetchUserAge = (): Promise<number> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(18);
