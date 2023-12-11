@@ -32,6 +32,16 @@ describe("User", () => {
 
     expect(result).toBe("User John buys iPhone");
   });
+
+  it("虛擬物件", () => {
+    const user = createUser("John");
+    const product = { name: "iPhone" } as Product;
+
+    // buy 只需要測試 name 和 product.name 是否正確
+    const result = user.buy(product);
+
+    expect(result).toBe("User John buys iPhone");
+  });
 });
 
 const createUser = (name: string) => {
