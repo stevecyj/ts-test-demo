@@ -12,4 +12,14 @@ describe("User", () => {
 
     expect(result).toBe("User John buys iPhone");
   });
+
+  it("v1, 使用參數預設值", () => {
+    const user = new User("John");
+    const product = new Product("iPhone");
+
+    // buy 只需要測試 name 和 product.name 是否正確
+    const result = user.buy(product);
+
+    expect(result).toBe("User John buys iPhone");
+  });
 });
