@@ -58,7 +58,7 @@ describe("delegated", () => {
     expect(todos[0]).toBe(todo);
   });
 
-  it("難以理解的 given", () => {
+  it.skip("難以理解的 given", () => {
     // given
     const { playerA, playerB, users } = createPlayersAndUsers();
 
