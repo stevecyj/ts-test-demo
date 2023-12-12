@@ -1,6 +1,6 @@
-import { doubleUserAge } from "./index";
+// import { doubleUserAge } from "./index";
 import { userAge, fetchUserAge } from "./user";
-import { vi, it, expect, describe } from "vitest";
+import { vi, it, expect, describe, beforeEach } from "vitest";
 
 // stub, 替換掉真實的邏輯實現
 // vi.mock("./user", () => {
@@ -10,14 +10,22 @@ import { vi, it, expect, describe } from "vitest";
 //   };
 // });
 
-vi.mock("./user");
+// vi.mock("./user");
 
 describe("間接 input", () => {
+  beforeEach(() => {
+    vi.doMock("./user", () => {
+      return {
+        userAge: () => 8,
+      };
+    });
+  });
+
   it("first", async () => {
     // given
-    vi.mocked(userAge).mockReturnValue(8);
+    // vi.mocked(userAge).mockReturnValue(8);
 
-    // when
+    const { doubleUserAge } = await import("./index");
     const actual = doubleUserAge();
 
     // then
@@ -25,7 +33,7 @@ describe("間接 input", () => {
   });
 
   it("second", async () => {
-    vi.mocked(userAge).mockReturnValue(12);
+    // vi.mocked(userAge).mockReturnValue(12);
     console.log("second userAge", userAge());
   });
 });
