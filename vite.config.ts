@@ -1,6 +1,8 @@
 import { defineConfig } from "vitest/config";
+import mockDevServerPlugin from "vite-plugin-mock-dev-server";
 
 export default defineConfig({
+  plugins: [mockDevServerPlugin()],
   test: {
     globals: true,
   },
@@ -13,6 +15,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": "./src/",
+    },
+  },
+  server: {
+    proxy: {
+      "^/api": "http://example.com/",
     },
   },
 });
