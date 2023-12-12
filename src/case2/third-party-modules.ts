@@ -7,7 +7,7 @@ interface User {
 }
 
 export async function doubleUserAge() {
-  const user: User = await axios("/api/test");
+  const user: User = await axios.get("/api/test");
   console.log("user =====> ", user);
   return user.age * 2;
 }

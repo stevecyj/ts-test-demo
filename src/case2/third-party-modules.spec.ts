@@ -5,7 +5,7 @@ import axios from "axios"; // Import the 'axios' module
 vi.mock("axios");
 
 test("第3方模塊處理 axios", async () => {
-  vi.mocked(axios).mockResolvedValue({ name: "JOJO", age: 18 });
+  vi.mocked(axios.get).mockResolvedValue({ name: "JOJO", age: 18 });
 
   const result = await doubleUserAge();
 
