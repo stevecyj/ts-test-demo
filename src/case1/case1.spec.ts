@@ -3,37 +3,37 @@ import { userAge, fetchUserAge } from "./user";
 import { vi, it, expect, describe, beforeEach } from "vitest";
 
 // stub, 替換掉真實的邏輯實現
-// vi.mock("./user", () => {
-//   return {
-//     userAge: () => 3,
-//     // fetchUserAge: () => Promise.resolve(6),
-//   };
-// });
+vi.mock("./user", () => {
+  return {
+    // userAge: () => 3,
+    fetchUserAge: () => Promise.resolve(6), // 返回一個 Promise
+  };
+});
 
 // vi.mock("./user");
 
 describe("間接 input", () => {
-  beforeEach(() => {
-    vi.doMock("./user", () => {
-      return {
-        userAge: () => 8,
-      };
-    });
-  });
+  // beforeEach(() => {
+  //   vi.doMock("./user", () => {
+  //     return {
+  //       userAge: () => 8,
+  //     };
+  //   });
+  // });
 
   it("first", async () => {
     // given
     // vi.mocked(userAge).mockReturnValue(8);
+    // const { doubleUserAge } = await import("./index");
 
-    const { doubleUserAge } = await import("./index");
-    const actual = doubleUserAge();
+    const actual = await fetchUserAge();
 
     // then
-    expect(actual).toBe(16);
+    expect(actual).toBe(6);
   });
 
   it("second", async () => {
     // vi.mocked(userAge).mockReturnValue(12);
-    console.log("second userAge", userAge());
+    // console.log("second userAge", userAge());
   });
 });

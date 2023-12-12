@@ -9,6 +9,7 @@ export const userAge = () => {
   return 18;
 };
 
+// 這邊類似呼叫 api
 export const fetchUserAge = (): Promise<number> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
