@@ -1,3 +1,7 @@
 export function doubleUserAge() {
-  return Number(import.meta.env.VITE_USER_AGE) * 2;
+  return jojo.age * 2;
+}
+
+export function doubleHeight() {
+  return innerHeight * 2;
 }
