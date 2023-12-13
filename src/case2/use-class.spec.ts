@@ -2,18 +2,18 @@ import { it, expect, describe, vi } from "vitest";
 import { doubleUserAge } from "./use-class";
 import { User } from "./User";
 
-vi.mock("./User", () => {
-  return {
-    User: class User {
-      // age: number = 24;
-      // name: string = "JOJO";
+// vi.mock("./User", () => {
+//   return {
+//     User: class User {
+//       age: number = 24;
+//       // name: string = "COCO";
 
-      getAge(): number {
-        return 36;
-      }
-    },
-  };
-});
+//       getAge(): number {
+//         return 36;
+//       }
+//     },
+//   };
+// });
 
 describe("使用 class", () => {
   it("屬性", () => {
@@ -22,6 +22,7 @@ describe("使用 class", () => {
   });
 
   it.only("方法", () => {
+    User.prototype.getAge = () => 36;
     const result = doubleUserAge();
     expect(result).toBe(72);
   });
