@@ -1,7 +1,7 @@
 import { vi, it, expect } from "vitest";
 import { doubleUserAge, doubleHeight } from "./user";
 
-vi.mock("window", () => {
+vi.mock("./window", () => {
   return {
     innerHeightFN: () => 250,
   };
@@ -13,19 +13,20 @@ it("doubleUserAge", () => {
   const result = doubleUserAge();
   expect(result).toBe(20);
 
-  vi.unstubAllEnvs();
+  vi.unstubAllGlobals();
 });
 
 it("double inner height", () => {
-  vi.stubGlobal("innerHeight", 10);
+  vi.stubGlobal("innerHeight", 100);
 
   const result = doubleHeight();
-  expect(result).toBe(20);
+  expect(result).toBe(500);
 
-  vi.unstubAllEnvs();
+  vi.unstubAllGlobals();
 });
 
 it("function", () => {
+  // console.log("innerHeight", innerHeight);
   const result = doubleHeight();
   expect(result).toBe(500);
 });
