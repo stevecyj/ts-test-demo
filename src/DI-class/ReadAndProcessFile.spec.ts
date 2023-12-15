@@ -9,7 +9,7 @@ describe("di - class", () => {
         return "file content";
       }
     }
-    const readAndProcessFile = new ReadAndProcessFile(new StubFileReader());
+    const readAndProcessFile = new ReadAndProcessFile(new StubFileReader()); // 透過構造函數注入
     const result = readAndProcessFile.run("file path");
     expect(result).toBe("file content→unit test");
   });
