@@ -6,6 +6,7 @@
 //     return content + "→unit test";
 //   }
 // }
+// 以上強耦合了 fs
 
 export interface IFileReader {
   read(filePath: string): string;
