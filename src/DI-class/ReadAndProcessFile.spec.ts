@@ -14,7 +14,7 @@ describe("di - class", () => {
     expect(result).toBe("file content→unit test");
   });
 
-  it.only("屬性", () => {
+  it("屬性", () => {
     class StubFileReader implements IFileReader {
       read(filePath: string): string {
         return "file content";
@@ -26,5 +26,15 @@ describe("di - class", () => {
     expect(result).toBe("file content→unit test");
   });
 
-  it("方法", () => {});
+  it.only("方法", () => {
+    class StubFileReader implements IFileReader {
+      read(filePath: string): string {
+        return "file content";
+      }
+    }
+    const readAndProcessFile = new ReadAndProcessFile();
+    readAndProcessFile.setFileReader(new StubFileReader()); // 透過方法注入
+    const result = readAndProcessFile.run("file path");
+    expect(result).toBe("file content→unit test");
+  });
 });
