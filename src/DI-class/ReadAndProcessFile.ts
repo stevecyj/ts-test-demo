@@ -14,6 +14,8 @@ export interface IFileReader {
 
 export class ReadAndProcessFile {
   private _fileReader: IFileReader;
+
+  // 透過構造器依賴注入
   constructor(fileReader: IFileReader) {
     this._fileReader = fileReader;
   }
