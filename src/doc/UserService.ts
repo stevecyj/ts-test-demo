@@ -10,4 +10,9 @@ export class UserService {
     this.db.addUser(newUser);
     return newUser;
   }
+
+  // 提供給外部使用狀態的 API
+  findUser(id: number): IUser | undefined {
+    return this.db.getUser(id);
+  }
 }

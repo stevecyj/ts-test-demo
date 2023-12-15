@@ -8,7 +8,9 @@ describe("UserService", () => {
     const userService = new UserService(database);
 
     const user = userService.createUser("John");
+
     // key: 到 database 裡面找到 user.id 的資料，並且檢查 name 是否為 John
-    expect(database.getUser(user.id)?.name).toBe("John");
+    // expect(database.getUser(user.id)?.name).toBe("John");
+    expect(userService.findUser(user.id)?.name).toBe("John");
   });
 });
