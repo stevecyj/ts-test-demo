@@ -3,6 +3,7 @@ import { readAndProcessFile } from "./readAndProcessFile";
 
 describe("di function", () => {
   it("read and process file", () => {
+    // 建立 StubFileReader class
     class StubFileReader {
       read(filePath: string) {
         return "JOJO";

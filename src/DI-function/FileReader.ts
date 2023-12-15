@@ -4,6 +4,6 @@ import { readFileSync } from "fs";
 
 export class FileReader {
   read(filePath: string) {
-    readFileSync(filePath, { encoding: "utf-8" });
+    return readFileSync(filePath, { encoding: "utf-8" });
   }
 }
